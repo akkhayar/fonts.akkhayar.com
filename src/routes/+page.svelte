@@ -1,11 +1,8 @@
-<h1>Fonts</h1>
+<div class="m-12">
+    <h1>Fonts</h1>
 
-<p>မင်းရဲ့အကြောင်းကိုငါသိတယ်</p>
+    <p>မင်းရဲ့အကြောင်းကိုငါသိတယ်</p>
+</div>
 
 <style>
-    @import url('http://localhost:5173/css?families=Ayar');
-
-    p {
-        font-family: Ayar;
-    }
 </style>
