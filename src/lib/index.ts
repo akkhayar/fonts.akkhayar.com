@@ -1,1 +1,5 @@
-// place files you want to import through the `$lib` alias in this folder.
+export const HOST = 'http://localhost:5173';
+
+export function generateImportURL(fonts: { family: string, weights?: number[] }[]) {
+  return `${HOST}/css2?fonts=${fonts.map((font) => `${font.family}${font.weights ? `:${font.weights.join(',')}` : ''}`).join(';')}&display=swap`;
+}
