@@ -1,4 +1,4 @@
-import type { RequestEvent, RequestHandler } from './$types'
+import type { RequestEvent, RequestHandler } from './$types';
 import registeredFonts from '$lib/fonts';
 
 
