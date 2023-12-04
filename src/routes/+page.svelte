@@ -2,75 +2,66 @@
     import { generateImportURL } from "$lib";
     import NavBar from "$lib/NavBar.svelte";
     import fonts from "$lib/fonts";
+
+    function revealCode() {
+        // const modal = document.querySelector("#modal");
+        // modal!.classList.toggle("hidden");
+    }
 </script>
 
-<div class="mx-12">
+<div class="mx-3 md:mx-9">
     <NavBar title="Fonts" />
 
     <section>
-        <div class="search-bar">
-            <input class="ps-2" type="text" placeholder="Search Fonts" />
-            <span class="hotkey">Ctrl + F</span>
+        <div class="p-2 cursor-pointer text-left flex justify-between items-center whitespace-nowrap rounded border-solid border" style="border-color: var(--border-color);">
+            <input class="ps-2 border-none w-full text-sm outline-none" type="text" placeholder="Search Fonts" />
+            <span class="p-0.5 text-sm font-bold w-fit rounded border-solid border" style="border-color: var(--foreground-light-color); color: var(--foreground-light-color);">Ctrl + F</span>
         </div>
     </section>
 
+    <div id="modal" class="hidden">
+    </div>
+
     {#each fonts as font}
-        <a href="/preview/{font}">
-            <div class="font-card mt-5 grid grid-cols-2">
-                <h2>{font}</h2>
-                <span>See more</span>
+        <link href={generateImportURL([{ family: font }])} rel="stylesheet" />
+        <div class="font-card p-7 md:p-10 mt-5 grid grid-cols-1 md:grid-cols-4 border-solid border text-sm">
+            <h2>{font}</h2>
+            <div class="mt-5 md:mt-0 flex align-center col-span-2">
+                <p style="font-size: 20px;">
+                    လူခပ်သိမ်း၏ မျိုးရိုးဂုဏ်သိက္ခာနှင့်တကွ
+                    လူတိုင်းအညီအမျှခံစားခွင့်ရှိသည့် အခွင့်အရေးများကို
+                </p>
+                <p style="font-family: '{font}', sans-serif; font-size: 20px;">
+                    လူခပ်သိမ်း၏ မျိုးရိုးဂုဏ်သိက္ခာနှင့်တကွ
+                    လူတိုင်းအညီအမျှခံစားခွင့်ရှိသည့် အခွင့်အရေးများကို
+                </p>
             </div>
-        </a>
+            <button on:click={revealCode} class="mt-4 md:mt-0 ms-auto">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="26"
+                    height="26"
+                    viewBox="0 0 256 256"
+                    ><path
+                        fill="currentColor"
+                        d="M140 176a4 4 0 0 1-4 4a12 12 0 0 1-12-12v-40a4 4 0 0 0-4-4a4 4 0 0 1 0-8a12 12 0 0 1 12 12v40a4 4 0 0 0 4 4a4 4 0 0 1 4 4Zm-16-84a8 8 0 1 0-8-8a8 8 0 0 0 8 8Zm104 36A100 100 0 1 1 128 28a100.11 100.11 0 0 1 100 100Zm-8 0a92 92 0 1 0-92 92a92.1 92.1 0 0 0 92-92Z"
+                    /></svg
+                >
+            </button>
+        </div>
+        <!-- <a href="/preview/{font}">
+        </a> -->
     {/each}
 </div>
 
 <style>
-    .search-bar {
-        padding: 0.4em !important;
-        cursor: pointer;
-        text-align: left;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        white-space: nowrap;
-        background: var(--background-color);
-        color: var(--foreground-color);
-        border-radius: 6px;
-        border: 1px solid var(--border-color);
-        font-size: 14px;
-    }
-
-    .search-bar .hotkey {
-        padding: 4px;
-        font-size: 11px;
-        font-weight: bold;
-        background: var(--background-color);
-        color: var(--foreground-light-color);
-        border-radius: 6px;
-        border: 1px solid var(--border-color);
-        font-family: Consolas;
-    }
-
-    .search-bar input {
-        border: none;
-        outline: none;
-        background: transparent;
-        color: var(--foreground-color);
-        font-size: 14px;
+    #modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
         width: 100%;
-    }
-
-    .font-card {
-        padding: 3em !important;
-        cursor: pointer;
-        text-align: left;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        white-space: nowrap;
-        background: var(--background-color);
-        color: var(--foreground-color);
-        border: 1px solid var(--foreground-light-color);
-        font-size: 14px;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
     }
 </style>
