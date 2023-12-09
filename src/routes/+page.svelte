@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { HOST } from "$lib";
+    import { generateImportURL } from "$lib";
     import NavBar from "$lib/NavBar.svelte";
     import fonts from "$lib/fonts";
 
@@ -35,14 +35,7 @@
         })
         .filter((f) => f !== undefined);
 
-    const fontsImportUrl = `${HOST}/css2?fonts=${families
-        .map(
-            (font) =>
-                `${font.family}${
-                    font.weights ? `:${font.weights.join(",")}` : ""
-                }`,
-        )
-        .join(";")}&display=swap`;
+    const fontsImportUrl = generateImportURL(families);
 </script>
 
 <link href={fontsImportUrl} rel="stylesheet" />
