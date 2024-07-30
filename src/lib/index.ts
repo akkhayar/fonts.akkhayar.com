@@ -1,4 +1,4 @@
-export const HOST = 'http://localhost:5173';
+export const HOST = 'https://fonts.akkhayar.com';
 
 export function generateImportURL(
     fonts: { family: string; weights?: string[] }[],
